@@ -1,60 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>🔐 AES Crypto Tool</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #111;
-            color: #fff;
-            padding: 2rem;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 0.7rem;
-            margin: 0.5rem 0;
-            border-radius: 8px;
-            border: none;
-            font-size: 1rem;
-        }
-        button {
-            padding: 0.7rem 1.5rem;
-            background-color: #5c6bc0;
-            color: white;
-            font-size: 1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .result {
-            background-color: #222;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            word-break: break-all;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>AES Encryptor 🔐</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      color: #fff;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      max-width: 500px;
+      width: 90%;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px 5px 0 5px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .encrypt-btn {
+      background-color: #00c9ff;
+      color: #000;
+    }
+    .decrypt-btn {
+      background-color: #ff4e50;
+      color: #fff;
+    }
+    .encrypt-btn:hover {
+      background-color: #00b4d8;
+    }
+    .decrypt-btn:hover {
+      background-color: #ff3c3c;
+    }
+    .result {
+      margin-top: 20px;
+      word-wrap: break-word;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border-radius: 10px;
+      font-family: monospace;
+    }
+  </style>
 </head>
 <body>
-    <h1>🛡️ AES Crypto Tool</h1>
-    <form method="POST">
-        <label for="action">Choose action:</label>
-        <select name="action" id="action">
-            <option value="Encrypt">🔒 Encrypt</option>
-            <option value="Decrypt">🔓 Decrypt</option>
-        </select>
-        <label for="message">Message:</label>
-        <textarea name="message" id="message" rows="4"></textarea>
-        <label for="passkey">Passkey:</label>
-        <input type="text" name="passkey" id="passkey" required>
-        <button type="submit">💥 Go</button>
+  <div class="glass-card">
+    <h1>🛡️ AES Encryptor</h1>
+    <form method="post">
+      <textarea name="message" rows="4" placeholder="Enter message or smushed text...">{{ request.form.message or '' }}</textarea>
+      <input type="text" name="passkey" placeholder="Enter passkey" value="{{ request.form.passkey or '' }}">
+      <div style="text-align:center;">
+        <button type="submit" name="action" value="Encrypt" class="encrypt-btn">Encrypt 🔐</button>
+        <button type="submit" name="action" value="Decrypt" class="decrypt-btn">Decrypt 🔓</button>
+      </div>
     </form>
     {% if result %}
-        <div class="result">
-            <strong>✅ Result:</strong>
-            <p>{{ result }}</p>
-        </div>
+      <div class="result">
+        <strong>✅ Result:</strong><br>{{ result }}
+      </div>
     {% endif %}
+  </div>
 </body>
 </html>
