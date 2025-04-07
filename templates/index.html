@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🔐 AES Crypto Tool</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #111;
+            color: #fff;
+            padding: 2rem;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+        }
+        button {
+            padding: 0.7rem 1.5rem;
+            background-color: #5c6bc0;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .result {
+            background-color: #222;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ AES Crypto Tool</h1>
+    <form method="POST">
+        <label for="action">Choose action:</label>
+        <select name="action" id="action">
+            <option value="Encrypt">🔒 Encrypt</option>
+            <option value="Decrypt">🔓 Decrypt</option>
+        </select>
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" rows="4"></textarea>
+        <label for="passkey">Passkey:</label>
+        <input type="text" name="passkey" id="passkey" required>
+        <button type="submit">💥 Go</button>
+    </form>
+    {% if result %}
+        <div class="result">
+            <strong>✅ Result:</strong>
+            <p>{{ result }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
