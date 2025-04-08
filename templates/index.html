@@ -83,8 +83,8 @@
   <div class="glass-card">
     <h1>🛡️ AES Encryptor</h1>
     <form method="post">
-      <textarea name="message" rows="4" placeholder="Enter message or smushed text...">{{ request.form.message or '' }}</textarea>
-      <input type="text" name="passkey" placeholder="Enter passkey" value="{{ request.form.passkey or '' }}">
+      <textarea name="message" rows="4" placeholder="Enter message or encrypted text...">{{ request.form.message or '' }}</textarea>
+      <input type="text" name="passkey" placeholder="Enter secret" value="{{ request.form.passkey or '' }}">
       <div style="text-align:center;">
         <button type="submit" name="action" value="Encrypt" class="encrypt-btn">Encrypt 🔐</button>
         <button type="submit" name="action" value="Decrypt" class="decrypt-btn">Decrypt 🔓</button>
